@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:horizontal_scrollable_calendar/src/date_extension.dart';
 import 'package:horizontal_scrollable_calendar/src/day_widget.dart';
+import 'package:horizontal_scrollable_calendar/src/year_month_picker.dart';
 import 'package:intl/intl.dart';
 
 const double dayWidgetWidth = 40;
+
 class CustomDatePicker extends StatefulWidget {
   final Function(DateTime)? onSelect;
   const CustomDatePicker({super.key, this.onSelect});
@@ -78,6 +80,19 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                     final monthText = DateFormat("MMMM yyyy").format(e);
                     return DropdownMenuItem(child: Text(monthText), value: e);
                   }).toList(),
+                  onTap: () async {
+                    final month = await YearMonthPicker(
+                      initialTime: selectedMonth,
+                    ).selectDate(context);
+                    if(month == null) return;
+
+                    selectedMonth = month;
+                    selectedDate = null;
+                    setupDays();
+                    scrollController.jumpTo(0);
+                    setState(() {});
+                  },
+                  enableFeedback: false,
                   onChanged: (newValue) {
                     selectedMonth = newValue!;
                     selectedDate = null;

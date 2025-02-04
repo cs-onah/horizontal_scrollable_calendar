@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class YearMonthPicker extends StatefulWidget {
   final DateTime? initialTime;
@@ -53,6 +54,7 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
@@ -78,6 +80,7 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
           SizedBox(
             height: 50,
             child: ListView.separated(
+              scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 final year = years[index];
                 return PickerBox(
@@ -100,12 +103,15 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
           ),
           const SizedBox(height: 12),
           SizedBox(
-            height: 50,
+            height: 35,
             child: ListView.separated(
+              scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 final month = months[index];
+                final displayDate = DateTime(2024, month);
+                final monthText = DateFormat("MMMM").format(displayDate);
                 return PickerBox(
-                  text: "$month",
+                  text: monthText,
                   onTap: () => setState(() => selectedMonth = month),
                   isSelected: month == selectedMonth,
                 );
@@ -147,7 +153,7 @@ class PickerBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Colors.purple;
     return Container(
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(4)),
         border: Border.all(color: isSelected ? color : Colors.grey),
