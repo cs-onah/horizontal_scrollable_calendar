@@ -64,45 +64,32 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             borderRadius: const BorderRadius.all(Radius.circular(100)),
             border: Border.all(color: Colors.grey),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.calendar_month_outlined),
-              const SizedBox(width: 8),
-              SizedBox(
-                width: 200,
-                child: DropdownButtonFormField<DateTime>(
-                  decoration: InputDecoration(border: InputBorder.none),
-                  isExpanded: true,
-                  value: selectedMonth,
-                  icon: Icon(Icons.keyboard_arrow_down),
-                  items: months.map((e) {
-                    final monthText = DateFormat("MMMM yyyy").format(e);
-                    return DropdownMenuItem(child: Text(monthText), value: e);
-                  }).toList(),
-                  onTap: () async {
-                    final month = await YearMonthPicker(
-                      initialTime: selectedMonth,
-                    ).selectDate(context);
-                    if(month == null) return;
-
-                    selectedMonth = month;
-                    selectedDate = null;
-                    setupDays();
-                    scrollController.jumpTo(0);
-                    setState(() {});
-                  },
-                  enableFeedback: false,
-                  onChanged: (newValue) {
-                    selectedMonth = newValue!;
-                    selectedDate = null;
-                    setupDays();
-                    scrollController.jumpTo(0);
-                    setState(() {});
-                  },
-                ),
-              ),
-            ],
+          child: InkWell(
+            onTap: () async {
+              final month = await YearMonthPicker(
+                initialTime: selectedMonth,
+              ).selectDate(context);
+              if (month == null) return;
+              selectedMonth = month;
+              selectedDate = null;
+              setupDays();
+              scrollController.jumpTo(0);
+              setState(() {});
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.calendar_month_outlined),
+                const SizedBox(width: 8),
+                Builder(builder: (_) {
+                  final monthText =
+                      DateFormat("MMMM yyyy").format(selectedMonth);
+                  return Text(monthText);
+                }),
+                const SizedBox(width: 8),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 20),
