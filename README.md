@@ -2,8 +2,10 @@
 
 A bespoke user interface for picking date.
 
-<img width="280" height="567" src="https://github.com/cs-onah/horizontal_scrollable_calendar/blob/main/docs/image.png">
-<img width="280" height="567" src="https://github.com/cs-onah/horizontal_scrollable_calendar/blob/main/docs/anim.gif">
+<p align="center">
+    <img width="280" height="567" src="https://github.com/cs-onah/horizontal_scrollable_calendar/blob/main/docs/image.png">
+    <img width="280" height="567" src="https://github.com/cs-onah/horizontal_scrollable_calendar/blob/main/docs/anim.gif">
+</p>
 
 ## Getting Started
 
