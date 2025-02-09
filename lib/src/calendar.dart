@@ -105,6 +105,7 @@ class _HorizontalScrollableCalendarState
               return DayWidget(
                 day: days[index],
                 isSelected: selectedDate?.dayOnly == days[index].dayOnly,
+                isDisabled: days[index].isBefore(DateTime.now().dayOnly),
                 onSelect: (date) => setState(() {
                   selectedDate = date;
                   widget.onSelect?.call(date);
