@@ -115,7 +115,7 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 final month = months[index];
-                final displayDate = DateTime(2024, month);
+                final displayDate = DateTime(selectedYear ?? 2024, month);
                 final monthText = DateFormat("MMMM").format(displayDate);
                 bool isDisabled =
                     displayDate.isBefore(DateTime.now().monthOnly);
@@ -132,6 +132,9 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(double.infinity, 48),
+            ),
             onPressed: () {
               try {
                 if (selectedYear == null) throw "Select a year";
@@ -172,8 +175,8 @@ class PickerBox extends StatelessWidget {
     final foregroundColor = isSelected
         ? color
         : isDisabled
-            ? Colors.grey[200]!
-            : Colors.grey;
+            ? Colors.grey[300]!
+            : Colors.grey[600]!;
     return InkWell(
       onTap: isDisabled ? null : onTap,
       child: Container(
@@ -184,7 +187,7 @@ class PickerBox extends StatelessWidget {
         ),
         child: Text(
           "$text",
-          style: TextStyle(color: foregroundColor),
+          style: TextStyle(color: foregroundColor, fontSize: 16),
         ),
       ),
     );

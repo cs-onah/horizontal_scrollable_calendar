@@ -7,10 +7,10 @@ A bespoke user interface for picking date.
 Import the package as a git dependency. 
 
 ```yaml
-  horizontal_scrollable_calendar:
-    git:
-      url: https://github.com/cs-onah/horizontal_scrollable_calendar
-      ref: main
+horizontal_scrollable_calendar:
+git:
+  url: https://github.com/cs-onah/horizontal_scrollable_calendar
+  ref: main
 ```
 
 ## Example
