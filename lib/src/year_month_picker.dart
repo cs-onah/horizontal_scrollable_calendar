@@ -153,22 +153,34 @@ class PickerBox extends StatelessWidget {
   final bool isSelected;
   final String? text;
   final VoidCallback? onTap;
-  const PickerBox({super.key, this.isSelected = false, this.text, this.onTap});
+  final bool isDisabled;
+  const PickerBox({
+    super.key,
+    this.isSelected = false,
+    this.text,
+    this.onTap,
+    this.isDisabled = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).primaryColor;
+    final foregroundColor = isSelected
+        ? color
+        : isDisabled
+            ? Colors.grey[200]!
+            : Colors.grey;
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(4)),
-          border: Border.all(color: isSelected ? color : Colors.grey),
+          border: Border.all(color: foregroundColor),
         ),
         child: Text(
           "$text",
-          style: TextStyle(color: isSelected ? color : Colors.grey),
+          style: TextStyle(color: foregroundColor),
         ),
       ),
     );
