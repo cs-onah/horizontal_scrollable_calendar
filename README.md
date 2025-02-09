@@ -2,12 +2,20 @@
 
 A bespoke user interface for picking date.
 
-## Usage
+## Getting Started
 
-Import the package as a git dependency. See an example below
+Import the package as a git dependency. 
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+```yaml
+  horizontal_scrollable_calendar:
+    git:
+      url: https://github.com/cs-onah/horizontal_scrollable_calendar
+      ref: main
+```
+
+## Example
+
+See sample code below
 
 ```dart
 import 'package:flutter/material.dart';
