@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horizontal_scrollable_calendar/src/date_extension.dart';
 import 'package:intl/intl.dart';
 
 class YearMonthPicker extends StatefulWidget {
@@ -116,10 +117,13 @@ class _YearMonthPickerState extends State<YearMonthPicker> {
                 final month = months[index];
                 final displayDate = DateTime(2024, month);
                 final monthText = DateFormat("MMMM").format(displayDate);
+                bool isDisabled =
+                    displayDate.isBefore(DateTime.now().monthOnly);
                 return PickerBox(
                   text: monthText,
                   onTap: () => setState(() => selectedMonth = month),
                   isSelected: month == selectedMonth,
+                  isDisabled: isDisabled,
                 );
               },
               separatorBuilder: (_, __) => SizedBox(width: 16),
@@ -171,7 +175,7 @@ class PickerBox extends StatelessWidget {
             ? Colors.grey[200]!
             : Colors.grey;
     return InkWell(
-      onTap: onTap,
+      onTap: isDisabled ? null : onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         decoration: BoxDecoration(
