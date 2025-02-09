@@ -1,5 +1,6 @@
 name: horizontal_calendar_example
 description: "Demonstrates how to use the horizontal scrollable calendar"
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -10,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  horizontal_scrollable_calendar:
+    path: ../
 
 dev_dependencies:
   flutter_test:

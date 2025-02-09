@@ -1,7 +1,7 @@
 name: horizontal_scrollable_calendar
 description: "A fully customizable calendar that scrolls horizontally"
 version: 0.0.1
-homepage:
+homepage: https://github.com/cs-onah/horizontal_scrollable_calendar.git
 
 environment:
   sdk: ^3.6.0

@@ -157,7 +157,7 @@ class PickerBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.purple;
+    final color = Theme.of(context).primaryColor;
     return InkWell(
       onTap: onTap,
       child: Container(

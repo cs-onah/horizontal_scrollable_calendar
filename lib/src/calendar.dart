@@ -6,14 +6,16 @@ import 'package:intl/intl.dart';
 
 const double dayWidgetWidth = 40;
 
-class CustomDatePicker extends StatefulWidget {
+class HorizontalScrollableCalendar extends StatefulWidget {
   final Function(DateTime)? onSelect;
-  const CustomDatePicker({super.key, this.onSelect});
+  const HorizontalScrollableCalendar({super.key, this.onSelect});
   @override
-  State<CustomDatePicker> createState() => _CustomDatePickerState();
+  State<HorizontalScrollableCalendar> createState() =>
+      _HorizontalScrollableCalendarState();
 }
 
-class _CustomDatePickerState extends State<CustomDatePicker> {
+class _HorizontalScrollableCalendarState
+    extends State<HorizontalScrollableCalendar> {
   DateTime get now => DateTime.now();
   List<DateTime> months = [];
   List<DateTime> days = [];

@@ -15,7 +15,7 @@ class DayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.purple;
+    final color = Theme.of(context).primaryColor;
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),
       child: Column(
